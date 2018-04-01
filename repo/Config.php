@@ -11,9 +11,9 @@ namespace repo;
 
 class Config
 {
-	protected static $username = 'root';
-	protected static $password = '';
-	protected static $servers = [
-		'db' => ['host' => 'localhost', 'db' => 'example']
-	];
+    protected static $username = 'root';
+    protected static $password = '';
+    protected static $servers = [
+        'db' => ['host' => 'localhost', 'db' => 'example']
+    ];
 }
