@@ -14,6 +14,6 @@ class Config
 	protected static $username = 'root';
 	protected static $password = '';
 	protected static $servers = [
-		'db' => ['host' => 'localhost', 'db' => 'sitemaps']
+		'db' => ['host' => 'localhost', 'db' => 'example']
 	];
 }
