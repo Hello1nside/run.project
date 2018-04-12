@@ -8,17 +8,12 @@
 
 namespace app\controller;
 
-use app\model\TasksModel;
+use core\Controller;
 
-class IndexController
+class IndexController extends Controller
 {
-	public static function getTasks()
+	public function index()
 	{
-		$tasksModel = new TasksModel();
-		$result = $tasksModel->getTask();
-
-		echo '<pre>';
-        print_r($result);
-		echo '</pre>';
+		$this->printLayout('index', false, 'Main page');
 	}
 }
