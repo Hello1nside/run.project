@@ -9,7 +9,7 @@
 namespace core;
 
 use Medoo\Medoo;
-use repo\Config;
+use core\Config;
 
 class DB extends Config
 {

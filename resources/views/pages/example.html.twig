@@ -1,0 +1,17 @@
+{% extends '_layout.html.twig' %}
+
+{% block title %}Example | run.project{% endblock %}
+
+{% block content %}
+    <div id="example"><br>
+        <input type="text" placeholder="name" v-model="form.name"><br><br>
+        <input type="text" placeholder="email" v-model="form.email"><br><br>
+        <textarea cols="30" rows="10" placeholder="message" v-model="form.message"></textarea><br><br>
+        <input type="file" @change="onFileChanged" accept="image/*"><br><br>
+        <button @click="send">Send</button>
+
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    </div>
+{% endblock %}
+
+{% block script %}<script src="/resources/assets/js/example.js"></script>{% endblock %}

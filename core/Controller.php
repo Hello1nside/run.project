@@ -10,8 +10,6 @@ namespace core;
 
 class Controller
 {
-	public $title = 'Simple title';
-
 	public function render($view, $data = [])
 	{
 		if (is_object($view) || is_array($view)) {
@@ -22,16 +20,6 @@ class Controller
 				return 'Error';
 			}
 			extract($data);
-		}
-	}
-
-	public function printLayout($view, $data = [], $title = false)
-	{
-		if (is_object($view) || is_array($view)) {
-			$this->render($view, $data);
-		} else {
-			$this->title = $title ?: $this->title;
-			include_once ROOT . '/views/basic/_layout.phtml';
 		}
 	}
 }

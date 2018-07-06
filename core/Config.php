@@ -16,5 +16,4 @@ class Config
     protected static $servers = [
         'db' => ['host' => 'localhost', 'db' => 'example']
     ];
-    //test
 }

@@ -1,39 +1,39 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: ivzhenko.volodymyr
- * Date: 29.03.2018
- * Time: 11:41
- */
 
 namespace app;
 
-use app\controller\IndexController;
+use app\controller\PhpMailerTest;
 
 class Route
 {
 	private $klein;
-	public $title = 'Simple title';
+	private $twig;
 
-	public function __construct($klein)
+	public function __construct($klein, $twig = false)
 	{
 		$this->klein = $klein;
-		$this->indexRoutes();
+		$this->twig = $twig;
+		$this->pagesRoutes();
 		$this->apiRoutes();
 	}
 
-	public function indexRoutes()
+	public function pagesRoutes()
 	{
 		$this->klein->respond('GET', '/', function ($request, $response, $service) {
-			$indexController = new IndexController();
-			$indexController->index();
+			echo $this->twig->load('@pages/example.html.twig')->render(['title' => 'Example title | run.project']);
+		});
+
+		$this->klein->respond('GET', '/example2', function ($request, $response, $service) {
+			echo $this->twig->load('@pages/example2.html.twig')->render(['title' => 'Example2 title | run.project']);
+		});
+
+		$this->klein->respond('GET', '/example3', function ($request, $response, $service) {
+			echo $this->twig->load('@pages/example3.html.twig')->render(['title' => 'Example3 title | run.project']);
 		});
 	}
 
 	public function apiRoutes()
 	{
-		$this->klein->respond('GET', '/example', function ($request, $response, $service) {
-
-		});
+		#api routes can be here
 	}
 }

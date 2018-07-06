@@ -10,13 +10,15 @@ namespace core;
 
 use Klein\Klein;
 use app\Route;
+use Twig_Environment;
 
 class App
 {
-    public static function run() {
+    public static function run()
+	{
         $klein = new Klein();
-
-        new Route($klein);
+		$twig = self::initTwig();
+        new Route($klein, $twig);
 
         $klein->onHttpError(function ($code, $router) {
             switch ($code) {
@@ -38,4 +40,19 @@ class App
         });;
         $klein->dispatch();
 	}
+
+    public static function initTwig()
+    {
+        $loader = new \Twig_Loader_Filesystem([
+            ROOT . '/resources/views/'
+        ]);
+        $loader->addPath(ROOT . '/resources/views/components/', 'components');
+        $loader->addPath(ROOT . '/resources/views/pages/', 'pages');
+        $twig = new Twig_Environment($loader, [
+            'debug' => true,
+            'cache' => ROOT . '/storage/twig/cache/',
+        ]);
+        $twig->addExtension(new \Twig_Extension_Debug());
+        return $twig;
+    }
 }
